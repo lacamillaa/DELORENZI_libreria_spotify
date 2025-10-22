@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct {
     char *name;
@@ -8,7 +9,13 @@ typedef struct {
 } Song;
 
 int main(void) {
-    int scelta = 0;
+    short int scelta = 0;
+    int nSongs = 0;
+    Song *songs = (Song*) malloc(sizeof(Song) * 100);
+    if (songs == NULL) {
+        printf("No memory left\n");
+        return 1;
+    }
     do {
         printf("Welcome in Camilla's Spotify\n");
         printf("1 - add song\n");
@@ -16,7 +23,7 @@ int main(void) {
         printf("3 - exit\n");
         do {
             printf("Enter your choice: ");
-            scelta = getchar();
+            scelta = (short) getchar();
             fflush(stdin);
             if (scelta == '1') {
                 // inserimento della canzone
@@ -34,5 +41,7 @@ int main(void) {
             }
         } while (scelta < '1' || scelta > '3');
     } while (scelta != '3');
+    free(songs);
+    songs = NULL;
     return 0;
 }
