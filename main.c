@@ -26,9 +26,13 @@ int main(void) {
             scelta = (short) getchar();
             fflush(stdin);
             if (scelta == '1') {
-                // inserimento della canzone
-                // array di canzoni
-                // se supera il limite (= 100) alloca altre 100
+                if (nSongs % 100 == 0) {
+                    songs = (Song*) realloc(songs, sizeof(Song) * (nSongs + 100));
+                }
+                if (songs == NULL) {
+                    printf("No memory left\n");
+                }
+                // creazione della canzone
             }
             else if (scelta == '2') {
                 // stampa
