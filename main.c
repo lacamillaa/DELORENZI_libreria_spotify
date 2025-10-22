@@ -59,10 +59,24 @@ int main(void) {
                         printf("No memory left\n");
                     }
                     else {
-                        char* nome = insertString(100);
-                        char* artist = insertString(100);
-                        char* album = insertString(100);
-                        char* seconds = insertString(5);
+                        char* nome;
+                        char* artist;
+                        char* album;
+                        char* seconds = NULL;
+                        short int sec = 0;
+                        while (sec == 0 || seconds == NULL) {
+                            printf("Enter the song duration: ");
+                            seconds = insertString(5);
+                            char* endptr;
+                            long int res = strtol(seconds, &endptr, 10);
+                            if (*(endptr + 1) != '\0' || res == 0) {
+                                printf("Please enter a valid number\n");
+                                sec = 0;
+                            }
+                            else {
+                                sec = (short int)res;
+                            }
+                        }
                     }
                 }
             }
