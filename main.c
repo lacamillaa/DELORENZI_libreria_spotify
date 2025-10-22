@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+typedef struct {
+    char *name;
+    char *artist;
+    char *album;
+    int seconds;
+} Song;
+
 int main(void) {
     int scelta = 0;
     do {
@@ -13,6 +20,8 @@ int main(void) {
             fflush(stdin);
             if (scelta == '1') {
                 // inserimento della canzone
+                // array di canzoni
+                // se supera il limite (= 100) alloca altre 100
             }
             else if (scelta == '2') {
                 // stampa
